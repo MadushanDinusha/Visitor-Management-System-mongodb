@@ -2,5 +2,9 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/visitor-UI" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/visitor-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/visitor-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/visitor-core/build" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/visitor-core/core" charset="UTF-8" />
   </component>
 </project>
