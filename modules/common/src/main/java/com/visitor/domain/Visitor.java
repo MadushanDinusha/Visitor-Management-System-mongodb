@@ -8,7 +8,7 @@ import org.mongojack.ObjectId;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Visitor {
 
-    public static final String COLLECTION_NAME = "visitor";
+    public static final String COLLECTION_NAME = "visitor_details";
     public static final String VISITOR_ID = "_id";
     public static final String NAME = "name";
 
