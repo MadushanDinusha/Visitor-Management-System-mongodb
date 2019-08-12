@@ -27,14 +27,11 @@ public class VisitorController {
         return "index";
     }
 
-    @RequestMapping(value = "/createVisitor", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/createVisitor", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<?> createVisitor(@RequestBody Map<String,String> request) {
+    public ResponseEntity<?> createVisitor(@RequestBody Visitor visitor) {
         try {
-            LOGGER.info("sending visitor to process {}",request);
-            Visitor visitor = new Visitor();
-            visitor.setName(request.get("name"));
-            visitor.setVisitorId(request.get("visitorId"));
+            LOGGER.info("sending visitor to process {}",visitor);
             visitorService.processVisitorSave(visitor);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {

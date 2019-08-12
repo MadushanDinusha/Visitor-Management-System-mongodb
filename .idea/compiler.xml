@@ -6,14 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="build" />
+        <module name="remoting-rs" />
         <module name="common" />
+        <module name="build" />
+        <module name="visitor-UI" />
         <module name="core" />
         <module name="db-repository" />
-        <module name="remoting-rs" />
-        <module name="visitor-UI" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="remorting-rs" target="11.0.3" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

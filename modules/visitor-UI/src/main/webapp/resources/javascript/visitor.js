@@ -1,18 +1,14 @@
 function addVisitor() {
-    var name = $("#exampleInputEmail1").val();
-    var ids = $("#exampleInputPassword1").val();
-    console.log("name and id " + name + " " + ids);
+
+    var person = new Object();
+    person.name = $("#exampleInputEmail1").val();
     $.ajax({
         url: "createVisitor",
-        dataType: 'json',
-        type: 'post',
-        contentType: 'application/json',
-        data: JSON.stringify(
-            {
-                "name": name,
-                "visitorId": ids
-            }),
-        processData: false,
+        type: "POST",
+        contentType: "application/json",
+        accept: 'text/plain',
+        data: JSON.stringify(person),
+        dataType: 'text',
         success: function (result) {
             alert("successfully added")
         },
