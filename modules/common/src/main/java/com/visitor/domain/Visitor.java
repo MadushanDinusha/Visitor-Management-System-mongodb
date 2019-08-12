@@ -34,4 +34,12 @@ public class Visitor {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Visitor{" +
+                "visitorId='" + visitorId + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

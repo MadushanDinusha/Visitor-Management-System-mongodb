@@ -35,10 +35,11 @@ public class VisitorServiceImpl implements VisitorService {
 
     @Override
     public void processVisitorSave(Visitor visitor) {
-        createVisitor(visitor);
-    }
-
-    private boolean createVisitor(Visitor visitor) {
-        return restClient.createVisitor(visitor);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Type", "application/json");
+        Map<String, Object> bodyMap = new HashMap<>();
+        bodyMap.put("name", visitor.getName());
+        bodyMap.put("id", visitor.getVisitorId());
+        restClient.createVisitor(bodyMap, headers, apiUrl.getRestApiUrl() + "/createVisitor");
     }
 }

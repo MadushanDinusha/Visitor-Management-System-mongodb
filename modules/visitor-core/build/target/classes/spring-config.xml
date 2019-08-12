@@ -8,8 +8,6 @@
 
     <context:property-placeholder location="classpath:connection.properties"/>
 
-
-
     <bean id="db" class="com.mongodb.DB" factory-bean="mongoConnector" factory-method="db"/>
 
     <bean id="mongoConnector" class="com.visitor.repository.mongo.connector.MongoConnector"
@@ -23,9 +21,7 @@
         <constructor-arg type="java.lang.String" value="${db.replica.sets}"/>
     </bean>
 
-
     <bean id="campaignRepository" class="com.visitor.repository.mongo.VisitorRepositoryImpl">
         <constructor-arg type="com.mongodb.DB" ref="db"/>
     </bean>
-
 </beans>

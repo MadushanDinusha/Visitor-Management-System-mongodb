@@ -2,6 +2,8 @@ package com.visitor.visitormanagementsystem.controller;
 
 import com.visitor.domain.Visitor;
 import com.visitor.visitormanagementsystem.service.VisitorService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -9,9 +11,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @Controller
 @RequestMapping(value = "/")
 public class VisitorController {
+
+    private static final Logger LOGGER = LogManager.getLogger(VisitorController.class);
 
     @Autowired
     private VisitorService visitorService;
@@ -21,11 +27,14 @@ public class VisitorController {
         return "index";
     }
 
-    @RequestMapping(value = "/createVisitor", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/createVisitor", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public ResponseEntity<?> createCampaign(@RequestBody Visitor visitor) {
+    public ResponseEntity<?> createVisitor(@RequestBody Map<String,String> request) {
         try {
+            LOGGER.info("sending visitor to process {}",request);
+            Visitor visitor = new Visitor();
+            visitor.setName(request.get("name"));
+            visitor.setVisitorId(request.get("visitorId"));
             visitorService.processVisitorSave(visitor);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {

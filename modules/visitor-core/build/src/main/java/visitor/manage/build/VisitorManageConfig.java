@@ -4,14 +4,15 @@ import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-//@ImportResource("classpath:spring-config.xml")
-@PropertySource({"classpath:application.properties"})
-@ComponentScan("visitor.manage")
+@ImportResource("classpath:spring-config.xml")
+@PropertySource({"classpath:application.properties", "classpath:connection.properties"})
+@ComponentScan("com.visitor")
 public class VisitorManageConfig {
 
         public void init(){

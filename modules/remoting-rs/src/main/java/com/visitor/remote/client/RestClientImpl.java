@@ -6,6 +6,8 @@ import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.visitor.domain.Visitor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.glassfish.jersey.media.multipart.internal.MultiPartWriter;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -16,6 +18,8 @@ import javax.ws.rs.core.MediaType;
 import java.util.Map;
 
 public class RestClientImpl implements RestClient {
+
+    private static final Logger LOGGER = LogManager.getLogger(RestClientImpl.class);
 
     private WebResource webResource;
 
@@ -28,15 +32,10 @@ public class RestClientImpl implements RestClient {
     }
 
 
-    public boolean createVisitor(Visitor visitor) {
-        ClientResponse response = webResource.path("/createVisitor")
-                .type(MediaType.APPLICATION_JSON)
-                .post(ClientResponse.class, visitor);
-        if (response.getStatus() != 200) {
-            return false;
-        }else {
-            return true;
-        }
+    public void createVisitor(Map<String, Object> bodyMap, HttpHeaders headers, String uri) {
+        RestTemplate restTemplate = new RestTemplate();
+        HttpEntity<Map<String, Object>> requestEntity = new HttpEntity<>(bodyMap, headers);
+        restTemplate.postForObject(uri, requestEntity, String.class);
     }
 
     public static class ApiUrl {

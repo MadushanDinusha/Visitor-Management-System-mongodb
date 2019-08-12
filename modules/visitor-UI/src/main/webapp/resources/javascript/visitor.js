@@ -1,19 +1,23 @@
 function addVisitor() {
-    var data = new FormData($('#addVisitor')[0]);
+    var name = $("#exampleInputEmail1").val();
+    var ids = $("#exampleInputPassword1").val();
+    console.log("name and id " + name + " " + ids);
     $.ajax({
         url: "createVisitor",
-        async: true,
-        type: "POST",
-        enctype: "multipart/form-data",
-        data: data,
+        dataType: 'json',
+        type: 'post',
+        contentType: 'application/json',
+        data: JSON.stringify(
+            {
+                "name": name,
+                "visitorId": ids
+            }),
         processData: false,
-        contentType: false,
-        cache: false,
         success: function (result) {
-           alert("successfully added")
+            alert("successfully added")
         },
         error: function (er) {
-            alert("error")
+            alert("error " + er)
         }
     });
 }

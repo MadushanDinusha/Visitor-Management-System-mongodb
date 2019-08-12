@@ -86,7 +86,7 @@
     </dependencies>
 
     <build>
-        <finalName>conversation-manage-UI</finalName>
+        <finalName>visitor-manage</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
