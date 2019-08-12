@@ -15,7 +15,7 @@ public class RemotingServer {
     @Qualifier("remotingServerProcessor")
     private RemotingServerProcessor remotingServerProcessor;
 
-    @RequestMapping(value = "/createCampaign", produces = MediaType.APPLICATION_JSON_VALUE,
+    @RequestMapping(value = "/createVisitor", produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity createCampaign(@RequestBody Visitor visitor) {
@@ -26,6 +26,4 @@ public class RemotingServer {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-
 }

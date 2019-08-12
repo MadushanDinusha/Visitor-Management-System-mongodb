@@ -4,9 +4,12 @@ import com.visitor.domain.Visitor;
 import com.visitor.remote.client.RestClientImpl;
 import com.visitor.remote.client.RestClientImpl.ApiUrl;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class VisitorServiceImpl implements VisitorService {
@@ -29,8 +32,13 @@ public class VisitorServiceImpl implements VisitorService {
         restClient = new RestClientImpl(apiUrl.getRestApiUrl());
     }
 
-    @Override
-    public void save(Visitor visitor) {
 
+    @Override
+    public void processVisitorSave(Visitor visitor) {
+        createVisitor(visitor);
+    }
+
+    private boolean createVisitor(Visitor visitor) {
+        return restClient.createVisitor(visitor);
     }
 }

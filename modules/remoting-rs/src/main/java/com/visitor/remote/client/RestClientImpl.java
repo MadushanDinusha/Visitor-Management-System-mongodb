@@ -7,9 +7,13 @@ import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
 import com.visitor.domain.Visitor;
 import org.glassfish.jersey.media.multipart.internal.MultiPartWriter;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
+import org.springframework.web.client.RestTemplate;
 
 import javax.ws.rs.core.MediaType;
+import java.util.Map;
 
 public class RestClientImpl implements RestClient {
 
@@ -23,12 +27,15 @@ public class RestClientImpl implements RestClient {
         webResource = client.resource(uri);
     }
 
-    @Override
-    public void save(Visitor visitor) {
-        ClientResponse response = webResource.path("/createCampaign")
+
+    public boolean createVisitor(Visitor visitor) {
+        ClientResponse response = webResource.path("/createVisitor")
                 .type(MediaType.APPLICATION_JSON)
                 .post(ClientResponse.class, visitor);
         if (response.getStatus() != 200) {
+            return false;
+        }else {
+            return true;
         }
     }
 

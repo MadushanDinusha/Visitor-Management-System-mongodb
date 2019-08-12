@@ -26,7 +26,7 @@ public class VisitorController {
     @ResponseBody
     public ResponseEntity<?> createCampaign(@RequestBody Visitor visitor) {
         try {
-            visitorService.save(visitor);
+            visitorService.processVisitorSave(visitor);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Campaign creation failed", HttpStatus.BAD_REQUEST);
