@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/visitor-UI" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/visitor-core" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/visitor-core" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/visitor-core/build" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/visitor-core/core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/remoting-rs" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/visitor-UI" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/visitor-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/visitor-core/build" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/visitor-core/core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/visitor-core/db-repository" charset="UTF-8" />
   </component>
 </project>
