@@ -11,14 +11,6 @@ import org.springframework.context.annotation.PropertySource;
 @ComponentScan({"com.visitor.visitormanagementsystem"})
 public class UIInitializer extends SpringBootServletInitializer {
 
-
-//    @PostConstruct
-//    private void init() {
-//    }
-//
-//    @PreDestroy
-//    private void destry() {
-//    }
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return application.sources(UIInitializer.class);

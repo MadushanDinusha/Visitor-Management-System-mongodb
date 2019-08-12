@@ -8,10 +8,10 @@ import org.apache.cxf.common.i18n.Exception;
 
 import java.util.List;
 
-public class MongoConnector {//    @Value("${db.replica.sets}")
+public class MongoConnector {
+
     private List<ServerAddress> replicas;
 
-    //    @Value("${campaign.db.name}")
     private String dbName;
 
     private DB db;
@@ -23,7 +23,6 @@ public class MongoConnector {//    @Value("${db.replica.sets}")
         this.dbName = dbName;
     }
 
-    //    @PostConstruct
     public void connect() throws Exception {
         this.mongo = new MongoClient(replicas);
         this.db = mongo.getDB(dbName);
