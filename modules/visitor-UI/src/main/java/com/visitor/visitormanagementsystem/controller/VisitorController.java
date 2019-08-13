@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/")
@@ -36,6 +35,17 @@ public class VisitorController {
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Campaign creation failed", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @RequestMapping(value = "/getAllVisitors",method = RequestMethod.GET)
+    public ResponseEntity<?> getAllVisitors(){
+        try {
+            LOGGER.info("Getting all visitors");
+            return new ResponseEntity<>(visitorService.getAllVisitors(),HttpStatus.OK);
+        }catch (Exception e){
+            LOGGER.info("Error occurred while getting visitors",e);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 }

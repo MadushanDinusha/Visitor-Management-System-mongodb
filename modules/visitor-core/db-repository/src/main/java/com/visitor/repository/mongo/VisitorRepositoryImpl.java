@@ -4,10 +4,14 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.visitor.domain.Visitor;
 import com.visitor.repository.VisitorRepository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.mongojack.JacksonDBCollection;
-import org.mongojack.WriteResult;
+
+import java.util.List;
 
 public class VisitorRepositoryImpl implements VisitorRepository {
+    private static final Logger LOGGER = LogManager.getLogger(VisitorRepositoryImpl.class);
 
     private JacksonDBCollection<Visitor, String> jacksonCollection;
 
@@ -16,8 +20,13 @@ public class VisitorRepositoryImpl implements VisitorRepository {
         jacksonCollection = JacksonDBCollection.wrap(collection, Visitor.class, String.class);
     }
 
-    public Visitor insertVisitor(Visitor visitor) {
-        WriteResult<Visitor, String> result = jacksonCollection.insert(visitor);
-        return result.getSavedObject();
+    public void insertVisitor(Visitor visitor) {
+        LOGGER.info("Inserting visitor to database [{}]",visitor);
+        jacksonCollection.insert(visitor);
+    }
+
+    public List<Visitor> getAllVisitors(){
+        LOGGER.info("Retrieving all visitors");
+        return jacksonCollection.find().toArray();
     }
 }

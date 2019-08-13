@@ -1,7 +1,6 @@
 package com.visitor.remote.client;
 
 import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
@@ -14,8 +13,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-import javax.ws.rs.core.MediaType;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class RestClientImpl implements RestClient {
 
@@ -36,6 +36,12 @@ public class RestClientImpl implements RestClient {
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<Map<String, Object>> requestEntity = new HttpEntity<>(bodyMap, headers);
         restTemplate.postForObject(uri, requestEntity, String.class);
+    }
+
+    public Optional<List<Visitor>> getAllVisitors(String uri) {
+        RestTemplate restTemplate = new RestTemplate();
+        List<Visitor> visitorList = (List<Visitor>) restTemplate.getForObject(uri, List.class);
+        return Optional.ofNullable(visitorList);
     }
 
     public static class ApiUrl {
