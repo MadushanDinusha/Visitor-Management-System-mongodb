@@ -11,8 +11,6 @@
 <head>
     <title>Title</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-    <link rel="stylesheet" type="text/css"
-          href="<c:url value="/resources/fonts/font-awesome-4.3.0/css/font-awesome.min.css"/>">
     <link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/bootstrap.min.css"/>">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300i,400,700" rel="stylesheet">
     <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.3.1.min.js"/>"></script>
@@ -28,13 +26,8 @@
         <h1>This is a sample form</h1>
         <div class="form-group">
             <label >Visitor Name</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            <input type="text" class="form-control" id="inputName" aria-describedby="emailHelp"
                    placeholder="Enter name">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-            <label >ID</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="id">
         </div>
         <button type="button" class="btn btn-primary" onclick="addVisitor()">Submit</button>
     </form>

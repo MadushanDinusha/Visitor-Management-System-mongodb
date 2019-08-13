@@ -1,7 +1,7 @@
 function addVisitor() {
 
     var person = new Object();
-    person.name = $("#exampleInputEmail1").val();
+    person.name = $("#inputName").val();
     $.ajax({
         url: "createVisitor",
         type: "POST",
