@@ -21,7 +21,7 @@
 </head>
 <body>
 <div class="container">
-
+ hashRulz
     <form id="uploadForm" name="uploadForm" method="post" enctype="multipart/form-data">
         <h1>This is a sample form</h1>
         <div class="form-group">
